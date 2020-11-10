@@ -10,7 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_10_012952) do
+ActiveRecord::Schema.define(version: 2020_11_10_014901) do
+
+  create_table "exercise_logs", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "exercise_id", null: false
+    t.integer "reps"
+    t.integer "weight"
+    t.integer "duration"
+    t.string "notes"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["exercise_id"], name: "index_exercise_logs_on_exercise_id"
+    t.index ["user_id"], name: "index_exercise_logs_on_user_id"
+  end
+
+  create_table "exercises", force: :cascade do |t|
+    t.string "name"
+    t.integer "exercise_log_count"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "username"
@@ -19,4 +39,6 @@ ActiveRecord::Schema.define(version: 2020_11_10_012952) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "exercise_logs", "exercises"
+  add_foreign_key "exercise_logs", "users"
 end
