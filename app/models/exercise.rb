@@ -4,6 +4,6 @@ class Exercise < ApplicationRecord
     validates :name, presence: true 
 
     def self.popular
-        order(appointment_count: :desc)
+        order(exercise_count: :desc)
     end 
 end
