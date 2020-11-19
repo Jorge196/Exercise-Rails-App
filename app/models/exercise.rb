@@ -1,9 +1,13 @@
 class Exercise < ApplicationRecord
-    belongs_to :exercise_log, counter_cache: true 
-    has_many :users, through: :exercise_logs, counter_cache: true 
+    has_many :exercise_logs
+    has_many :users, -> { distinct }, through: :exercise_logs
     validates :name, presence: true 
 
     def self.popular
-        order(exercise_count: :desc)
+        order(exercise_log_count: :desc)
+    end 
+    
+    def self.alphabetical 
+        order(:name, exercise: :asc)
     end 
 end

@@ -1,7 +1,6 @@
 class ExerciseLog < ApplicationRecord
   belongs_to :user
-  belongs_to :exercise
-  validates :user_id, :exercise_id 
+  belongs_to :exercise, counter_cache: :exercise_log_count  
   validate :reps_weight_duration_and_notes
 
 

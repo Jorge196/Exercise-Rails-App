@@ -15,8 +15,5 @@ class ExerciseLogsController < ApplicationController
     def edit 
     end 
 
-    private 
-
-    def exercise_params 
 
 end
