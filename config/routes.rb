@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   end 
   resources :exercise_logs, only: [:index, :show, :new, :create, :edit, :update]
   resources :users, only: [:show]
-  root 'exercises#index'
+  root 'users#show'
 
   # resources :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

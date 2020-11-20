@@ -1,7 +1,7 @@
 class Exercise < ApplicationRecord
     has_many :exercise_logs
     has_many :users, -> { distinct }, through: :exercise_logs
-    validates :name, presence: true 
+    validates :name, presence: true
 
     def self.popular
         order(exercise_log_count: :desc)

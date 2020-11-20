@@ -1,7 +1,21 @@
-<%= form_for exercise do |f| %>
-    <p>
-        <%= f.label :name, "Add name of exercise here" %><br/>
-        <%= f.text_field :name %>
-    </p>
-    <%= f.submit %>
-<% end %> 
+<nav>
+    <button><%= link_to "New Exercise", new_exercise_path %></button>
+</nav>
+
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th> Exercises </th>
+            </tr>
+        </thead> 
+            <% @exercises.each do |exercise| %>
+                <tr>
+                    <td><%= exercise.name %></td>
+                    <td><%= exercise.exercise_log_count%>
+                </tr> 
+            <% end %>      
+    <table> 
+
+
+</div>

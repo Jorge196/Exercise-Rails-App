@@ -1,13 +1,32 @@
 class ExercisesController < ApplicationController
+    before_action :authenticate_user!
     def index 
-        @exercises = Exercise.all 
+        @exercises = Exercise.all
+    end 
+
+    def show 
+        @exercise = Exercise.find(params[:id])
+        
     end 
     
     def new 
         @exercise = Exercise.new
     end 
 
-    def show 
+    def create
+        @exercise = Exercise.new(exercise_params)
+        if @exercise.save
+            redirect_to exercise_path(@exercise)
+        else 
+            render :new 
+        end 
+    end
+    
+
+    private 
+
+    def exercise_params 
+        params.require(:exercise).permit(:name, :exercise_log_count)
     end 
 
 

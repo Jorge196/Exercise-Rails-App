@@ -1,2 +1,10 @@
 <h1>New Exercise</h1>
-<%= render partial: 'form', locals: { exercise: @exercise }%>
+
+<%= form_for @exercise do |f| %>
+    <p>
+        <%= f.label :name, "Add name of exercise here" %><br/>
+        <%= f.text_field :name %>
+    </p>
+    <%= f.submit %>
+<% end %> 
+

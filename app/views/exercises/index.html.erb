@@ -1,15 +1,2 @@
 <h1>Exercises Page </h1>
-<%= form_for @exercise do |f| %>
-<%= button_to "New Exercise", new_exercise_path, :method => "get" %>
-    <table> 
-        <tr>
-            <th>Exercise Name</th>
-        <tr>
-        <%= f.fields_for :exercises do |exercise| %> 
-        <tr> 
-            <%= exercise.hidden_field :id %> 
-            <td><%= exercise.text_field :name %></td>
-        <tr> 
-        <% end %>
-    </table>
-<% end %> 
+<%= render partial: 'form', locals: { exercise: @exercise }%>
