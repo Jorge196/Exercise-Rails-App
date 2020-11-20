@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
    
   def show 
-    @users = current_user.User.find(user_params)
+  
   end 
 
   private 
