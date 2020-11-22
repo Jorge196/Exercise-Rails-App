@@ -1,8 +1,15 @@
 <%= show_errors_for(@exercise_log) %>
 <%= form_for @exercise_log do |f| %>
     <p>
-        <%= f.label :exercise_id, "Exercise" %>
-       <%= f.collection_select :exercise_id, Exercise.all, :id, :name %>
+    <% if exercise_log.exercise_id %>
+        <%= f.label :exercise_id, "Exercise"%>
+        <%= f.hidden_field :exercise_id %>
+        <%= exercise_log.exercise.name %>
+        <% else %>
+
+            <%= f.label :exercise_id, "Exercise" %>
+            <%= f.collection_select :exercise_id, Exercise.all, :id, :name %>
+        <% end %>
     </p>
 
      <p>

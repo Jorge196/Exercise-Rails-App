@@ -57,16 +57,6 @@ class ExerciseLogsController < ApplicationController
         @exercise_log = current_user.exercise_logs.find(params[:id])
     end 
 
-    def filter_options
-        if params[:sort_alphabetically] == "alphabetical"
-            @exercises = Exercise.name.alphabetical
-        end 
-
-        if params[:sort] == "popular"
-            @exercises = Exercise.exercise_log_count.popular
-        end 
-    end 
-
     def exercise_log_params
         params.require(:exercise_log).permit(:exercise_id, :user_id, :reps, :weight, :duration, :notes)
     end 

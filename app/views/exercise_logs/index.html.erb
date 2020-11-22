@@ -2,22 +2,6 @@
 <nav>
     <button><%= link_to "Add Exercise Log", new_exercise_log_path %></button>
 </nav>
-
-<%= form_tag(exercise_logs_path, method: 'get') do %>
-  <label for="sort_alphabetically">Alphabetical</label>
-  <select name="sort_alphabetically">
-    <option <%= 'selected' if params[:sort_alphabetically] == '' %> value="">All</option>
-    <option <%= 'selected' if params[:sort_alphabetically] == 'alphabetical' %> value="alphabetical">Alphabetical</option>
-
-  </select>
-  <label for="sort">Sort</label>
-  <select name="sort">
-    <option <%= 'selected' if params[:sort] == '' %> value="">None</option>
-    <option <%= 'selected' if params[:sort] == 'popular' %> value="popular">Most Popular</option>
-  </select>
-  <%= submit_tag 'Filter Results' %>
-<% end %>
-
 <div>
 <table>
     <style>

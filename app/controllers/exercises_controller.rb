@@ -3,6 +3,7 @@ class ExercisesController < ApplicationController
     before_action :set_exercise, only: [:show, :edit, :update, :destroy]
     def index 
         @exercises = Exercise.all
+        filter_options
     end 
 
     def show 
@@ -28,6 +29,17 @@ class ExercisesController < ApplicationController
     def set_exercise
         @exercise = Exercise.find(params[:id])
     end 
+
+    def filter_options
+        if params[:sort_alphabetically] == "alphabetical"
+            @exercises = @exercises.alphabetical
+        end 
+
+        if params[:sort] == "popular"
+            @exercises = @exercises.popular
+        end 
+    end 
+
 
     def exercise_params 
         params.require(:exercise).permit(:name, :exercise_log_count)
