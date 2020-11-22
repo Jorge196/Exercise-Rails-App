@@ -20,5 +20,6 @@ class User < ApplicationRecord
         password: SecureRandom.hex
       )
     end
+    user.update(uid: uid, full_name: full_name, avatar_url: avatar_url)
   end
 end
