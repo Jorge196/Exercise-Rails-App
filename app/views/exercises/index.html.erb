@@ -1,22 +1,25 @@
-<h1>Exercises Page </h1>
+<h1>Exercises </h1>
 <nav>
     <button><%= link_to "New Exercise", new_exercise_path %></button>
 </nav>
-
+   
 <div>
-    <table>
-        <thead>
-            <tr>
-                <th> Exercises </th>
-            </tr>
-        </thead> 
-            <% @exercises.each do |exercise| %>
-                <tr>
-                    <td><%= exercise.name %></td>
-                    <td><%= exercise.exercise_log_count%>
-                </tr> 
-            <% end %>      
-    <table> 
-
-
+<table>
+    <style>
+    table, th, td{border: 1px solid black;}
+        th {width: 140px}
+        td {width: 150px}
+    </style>
+    <tr>
+        <th>Exercises</th>
+        <th>Exercise Log Count</th>
+        
+    </tr>
+    <% @exercises.each do |exercise| %>
+        <tr>
+            <td><%= link_to exercise.name, exercise_path(exercise) %></td>
+            <td><%= exercise.exercise_log_count%>
+        </tr>
+    <% end %>      
+</table> 
 </div>

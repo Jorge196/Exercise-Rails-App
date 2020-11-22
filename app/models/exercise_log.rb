@@ -6,7 +6,7 @@ class ExerciseLog < ApplicationRecord
 
   def reps_weight_duration_and_notes
     unless (reps.present? && weight.present?) || duration.present? || notes.present? 
-      errors.add("Workout must contain either 'reps and weight, duration, or notes'")
+      self.errors.add(:not_implemented, "workout must contain either reps and weight, duration, or notes")
     end
   end 
 end

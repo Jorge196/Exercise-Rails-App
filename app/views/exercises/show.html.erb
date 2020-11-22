@@ -1,6 +1,8 @@
 <p><%= link_to "Back to Exercises",  exercises_path %></p>
+<p><%= link_to "#{@exercise.name}'s exercise logs", exercise_exercise_logs_path(@exercise) %></p>
+<p><%= link_to "Add #{@exercise.name} to your log", new_exercise_exercise_log_path(@exercise) %></p>
 <h2>Exercise successfully added<h2>
- 
+
  <p>Exercise: <%= @exercise.name %></p>
 
 

@@ -1,0 +1,11 @@
+<h1>Exercise Log added<h1>
+<button><%= link_to "Back to Exercise_log", exercise_logs_path %></button>
+<p>Exercise: <%= link_to @exercise_log.exercise.name, exercise_path(@exercise_log.exercise) %></p>
+<p>Reps: <%= @exercise_log.reps %></p>
+<p>Weight: <%= @exercise_log.weight %>lbs</p>
+<p>Duration(minutes): <%= @exercise_log.duration %></p>
+<p>Notes: <%= @exercise_log.notes %></p>
+<%= link_to "Edit Exercise Log", edit_exercise_log_path(@exercise_log) %>
+<%= form_tag(exercise_log_path(@exercise_log), method: :delete, style: 'display: inline-block;') do %>
+    <%= submit_tag "Delete Exercise Log" %>
+<% end %>

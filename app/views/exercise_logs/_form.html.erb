@@ -1,0 +1,28 @@
+<%= show_errors_for(@exercise_log) %>
+<%= form_for @exercise_log do |f| %>
+    <p>
+        <%= f.label :exercise_id, "Exercise" %>
+       <%= f.collection_select :exercise_id, Exercise.all, :id, :name %>
+    </p>
+
+     <p>
+        <%= f.label :reps %>
+        <%= f.text_field :reps %>
+    </p>
+     <p>
+        <%= f.label :weight %>
+        <%= f.text_field :weight %>
+
+    </p>
+     <p>
+        <%= f.label :duration %>(minutes)
+        <%= f.text_field :duration %>
+    </p>
+    <p>
+        <%= f.label :notes %>
+        <%= f.text_field :notes%>
+    </p>
+    <%= f.submit %>
+
+
+<% end %>

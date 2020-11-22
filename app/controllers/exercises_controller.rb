@@ -1,11 +1,11 @@
 class ExercisesController < ApplicationController
     before_action :authenticate_user!
+    before_action :set_exercise, only: [:show, :edit, :update, :destroy]
     def index 
         @exercises = Exercise.all
     end 
 
     def show 
-        @exercise = Exercise.find(params[:id])
         
     end 
     
@@ -24,6 +24,10 @@ class ExercisesController < ApplicationController
     
 
     private 
+
+    def set_exercise
+        @exercise = Exercise.find(params[:id])
+    end 
 
     def exercise_params 
         params.require(:exercise).permit(:name, :exercise_log_count)
