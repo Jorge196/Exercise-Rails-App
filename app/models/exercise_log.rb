@@ -9,4 +9,8 @@ class ExerciseLog < ApplicationRecord
       self.errors.add(:not_implemented, "workout must contain either reps and weight, duration, or notes")
     end
   end 
+
+  def self.highest_duration
+    order(:duration, :desc)
+  end 
 end

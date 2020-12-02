@@ -8,7 +8,8 @@ class ExerciseLogsController < ApplicationController
             @exercise_logs = @exercise.exercise_logs
         else 
             @exercise_logs = current_user.exercise_logs
-        end 
+        end
+        filter_options 
     end 
 
     def show 
@@ -59,6 +60,12 @@ class ExerciseLogsController < ApplicationController
 
     def exercise_log_params
         params.require(:exercise_log).permit(:exercise_id, :user_id, :reps, :weight, :duration, :notes)
+    end 
+
+    def filter_options
+        if params [:sort_duration] == "highest duration"
+            @exercise_log = @exercise_log.highest_duration
+        end 
     end 
   
 end
