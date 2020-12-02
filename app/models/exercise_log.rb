@@ -11,6 +11,6 @@ class ExerciseLog < ApplicationRecord
   end 
 
   def self.highest_duration
-    order(:duration, :desc)
+    order(duration: :desc)
   end 
 end

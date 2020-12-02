@@ -2,16 +2,16 @@
 <nav>
     <button><%= link_to "Add Exercise Log", new_exercise_log_path %></button>
 </nav>
-<div>
-    <%= form_tag(exercise_log_path, method: 'get') do %>
-        <label for="sort_duration">Highest Duration</label>
-        <select name="sort_duration">
-            <option <%= 'selected' if params[:sort_duration] == '' %> value="">None</option>
-            <option <%= 'selected' if params[:sort_duration] == 'highest duration' %> value="highest duration">Highest Duration</option>
-        </select>
-        <%= submit_tag 'Filter Results' %>
-    <% end %>
 
+<%= form_tag(exercise_logs_path, method: 'get') do %>
+    <label for="sort">Sort</label>
+    <select name="sort">
+        <option <%= 'selected' if params[:sort] == '' %> value="">None</option>
+        <option <%= 'selected' if params[:sort] == 'highest_duration' %> value="highest_duration">Highest Duration</option>
+    </select>
+    <%= submit_tag 'Filter Results' %>
+<% end %>
+<div>
 <table>
     <style>
     table, th, td{border: 1px solid red;}

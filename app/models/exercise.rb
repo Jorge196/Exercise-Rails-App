@@ -11,4 +11,5 @@ class Exercise < ApplicationRecord
     def self.alphabetical 
         order(:name, exercise: :asc)
     end 
+
 end

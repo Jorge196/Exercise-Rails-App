@@ -3,13 +3,13 @@ class ExerciseLogsController < ApplicationController
     before_action :set_exercise_log, only: [:show, :edit, :update, :destroy]
     
     def index 
-        @exercise = Exercise.find_by_id(params[:exercise_id])
+        @exercise = Exercise.find_by_id(params[:exercise_id])  
         if @exercise
             @exercise_logs = @exercise.exercise_logs
         else 
             @exercise_logs = current_user.exercise_logs
         end
-        filter_options 
+        filter_options
     end 
 
     def show 
@@ -58,14 +58,14 @@ class ExerciseLogsController < ApplicationController
         @exercise_log = current_user.exercise_logs.find(params[:id])
     end 
 
+    def filter_options
+        if params[:sort] == "highest_duration"
+            @exercise_logs = @exercise_logs.highest_duration
+        end 
+    end 
+
     def exercise_log_params
         params.require(:exercise_log).permit(:exercise_id, :user_id, :reps, :weight, :duration, :notes)
     end 
 
-    def filter_options
-        if params [:sort_duration] == "highest duration"
-            @exercise_log = @exercise_log.highest_duration
-        end 
-    end 
-  
 end
